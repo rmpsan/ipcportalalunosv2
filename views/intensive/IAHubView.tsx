@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Chat } from '@google/genai';
-import { createChatSession, sendMessageStream } from '../../services/geminiService';
 import { ChatMessage, LlmProvider, IAHubSubView } from '../../types';
 import { LLM_CONFIG } from '../../constants';
 
@@ -10,24 +8,13 @@ import ChatWelcome from './ia_hub_components/ChatWelcome';
 import ChatMessageBubble from './ia_hub_components/ChatMessage';
 
 const IAHubView: React.FC = () => {
-    const [activeLlm, setActiveLlm] = useState<LlmProvider>(LlmProvider.GEMINI);
+    const [activeLlm, setActiveLlm] = useState<LlmProvider>(LlmProvider.CLAUDE);
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [activeSubView, setActiveSubView] = useState<IAHubSubView>(IAHubSubView.PLAYGROUND);
 
-    const chatRef = useRef<Chat | null>(null);
     const chatHistoryRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // Initialize the chat session
-        try {
-            chatRef.current = createChatSession();
-        } catch (error) {
-            console.error("Failed to initialize Gemini chat:", error);
-            setMessages([{ sender: 'ai', text: 'Error: Could not connect to the AI service. Please check your API key configuration.', provider: activeLlm }]);
-        }
-    }, []);
 
     useEffect(() => {
         if (chatHistoryRef.current) {
@@ -41,45 +28,15 @@ const IAHubView: React.FC = () => {
 
     const handleSendMessage = async (prompt: string) => {
         const messageText = prompt.trim();
-        if (!messageText || isLoading || !chatRef.current) return;
+        if (!messageText || isLoading) return;
 
         setInputValue('');
         setIsLoading(true);
 
         const userMessage: ChatMessage = { sender: 'user', text: messageText };
-        setMessages(prev => [...prev, userMessage, { sender: 'ai', text: '', provider: activeLlm }]);
+        setMessages(prev => [...prev, userMessage, { sender: 'ai', text: 'Esta funcionalidade está temporariamente desabilitada. Por favor, tente novamente mais tarde.', provider: activeLlm }]);
 
-        try {
-            const stream = await sendMessageStream(chatRef.current, messageText);
-            let firstChunk = true;
-            for await (const chunk of stream) {
-                setMessages(prev => {
-                    const lastMessage = prev[prev.length - 1];
-                    if (lastMessage.sender === 'ai') {
-                         if (firstChunk) {
-                            lastMessage.text = chunk.text;
-                            firstChunk = false;
-                        } else {
-                            lastMessage.text += chunk.text;
-                        }
-                        return [...prev.slice(0, -1), lastMessage];
-                    }
-                    return prev;
-                });
-            }
-        } catch (error) {
-            console.error("Gemini API error:", error);
-            setMessages(prev => {
-                const lastMessage = prev[prev.length - 1];
-                if (lastMessage.sender === 'ai') {
-                    lastMessage.text = 'An error occurred while processing your request. Please try again.';
-                    return [...prev.slice(0, -1), lastMessage];
-                }
-                return prev;
-            });
-        } finally {
-            setIsLoading(false);
-        }
+        setIsLoading(false);
     };
 
     const handleFormSubmit = (e: React.FormEvent) => {

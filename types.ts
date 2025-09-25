@@ -104,7 +104,6 @@ export enum IAHubSubView {
 }
 
 export enum LlmProvider {
-    GEMINI = 'gemini',
     CLAUDE = 'claude',
     CHATGPT = 'chatgpt',
 }

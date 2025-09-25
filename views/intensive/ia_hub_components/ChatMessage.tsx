@@ -9,7 +9,7 @@ interface ChatMessageBubbleProps {
 const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({ message }) => {
     const { sender, text, provider } = message;
     const isUser = sender === 'user';
-    const config = LLM_CONFIG[provider || LlmProvider.GEMINI];
+    const config = LLM_CONFIG[provider || LlmProvider.CLAUDE];
     const LogoComponent = config.logo;
 
     return (

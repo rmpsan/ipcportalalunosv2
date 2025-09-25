@@ -35,20 +35,6 @@ export const EAD_SIDEBAR_LINKS = [
 
 
 export const LLM_CONFIG = {
-    [LlmProvider.GEMINI]: {
-        name: 'Gemini',
-        avatarColor: 'bg-teal-500',
-        initialMessage: 'Olá! Sou a IA Gemini do Instituto. Como posso te ajudar a criar hoje?',
-        logo: (props: any) => (
-            <svg {...props} viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        ),
-        welcomePrompts: [
-            "Me dê ideias para um curta-metragem sobre amizade",
-            "Como posso melhorar a iluminação de uma cena noturna?",
-            "Crie um diálogo entre um robô e seu criador",
-            "Qual a melhor lente para retratos em close-up?",
-        ]
-    },
     [LlmProvider.CLAUDE]: {
         name: 'Claude',
         avatarColor: 'bg-orange-500',
