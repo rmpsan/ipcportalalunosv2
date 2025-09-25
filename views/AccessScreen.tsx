@@ -9,7 +9,7 @@ interface AccessScreenProps {
 const areasDeInteresse = ['Produção', 'Roteiro', 'Direção', 'IA Audiovisual', 'Pós-produção', 'Áudio'];
 
 const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
-  const [mode, setMode] = useState<AccessMode>(AccessMode.CHOICE);
+  const [mode, setMode] = useState<AccessMode>(AccessMode.INTENSIVE_LOGIN);
   const [eadTab, setEadTab] = useState<'login' | 'register'>('login');
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const addElement = useRevealOnScroll();
@@ -42,19 +42,47 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
   const renderIntensiveLogin = () => (
     <div className="w-full max-w-md mx-auto animate-[fadeInUp_0.5s_ease-out]">
       <div className="bg-black/40 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-        <button onClick={() => setMode(AccessMode.CHOICE)} className="text-sm text-teal-300 hover:text-teal-100 mb-4">&larr; Voltar</button>
-        <h2 className="text-3xl font-bold text-center text-teal-400 mb-6">Acesso Aluno Intensivo</h2>
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-teal-400 mb-2">Instituto Paulista de Cinema</h1>
+          <p className="text-sm text-gray-300">Portal do Aluno - Programa Intensivo</p>
+        </div>
+        
+        {/* Credenciais de demonstração */}
+        <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-4 mb-6">
+          <h3 className="text-sm font-semibold text-teal-300 mb-2">📋 Credenciais de Demonstração</h3>
+          <div className="text-xs text-gray-300 space-y-1">
+            <p><span className="font-medium">Email:</span> teste@institutopaulistadecinema.com.br</p>
+            <p><span className="font-medium">Senha:</span> ipcine123</p>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-bold text-center text-white mb-6">Acesso do Aluno</h2>
         <form onSubmit={(e) => { e.preventDefault(); onLogin('intensive'); }} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-300">Email ou CPF</label>
-            <input type="text" required className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" />
+            <input 
+              type="text" 
+              required 
+              defaultValue="teste@institutopaulistadecinema.com.br"
+              className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" 
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-300">Senha</label>
-            <input type="password" required className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" />
+            <input 
+              type="password" 
+              required 
+              defaultValue="ipcine123"
+              className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" 
+            />
           </div>
           <button type="submit" className="w-full bg-teal-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-600 transition-all shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1">Entrar</button>
         </form>
+        <div className="mt-6 pt-4 border-t border-gray-600">
+          <button onClick={() => setMode(AccessMode.CHOICE)} className="w-full text-sm text-gray-400 hover:text-teal-300 transition-colors">
+            Outras opções de acesso →
+          </button>
+        </div>
       </div>
     </div>
   );
