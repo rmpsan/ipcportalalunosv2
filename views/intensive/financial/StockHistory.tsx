@@ -1,10 +1,13 @@
 import React from 'react';
 
 const recentSales = [
-  { id: 1, video: 'Drone sobre a cidade', date: '20/07/2024', earnings: 'R$ 25,00' },
-  { id: 2, video: 'Close-up de gotas de chuva', date: '18/07/2024', earnings: 'R$ 12,50' },
-  { id: 3, video: 'Pôr do sol na praia', date: '15/07/2024', earnings: 'R$ 25,00' },
-  { id: 4, video: 'Drone sobre a cidade', date: '12/07/2024', earnings: 'R$ 25,00' },
+  { id: 1, video: 'Drone sobre montanhas', date: '25/07/2024', earnings: 'R$ 156,00', platform: 'Pond5 + VideoHive + Dissolve' },
+  { id: 2, video: 'Movimento de pessoas na cidade', date: '22/07/2024', earnings: 'R$ 75,00', platform: 'Adobe Stock + Dreamstime + Stocksy' },
+  { id: 3, video: 'Arquitetura moderna', date: '20/07/2024', earnings: 'R$ 37,00', platform: 'Shutterstock + Alamy + 123RF' },
+  { id: 4, video: 'Paisagem Urbana Noturna', date: '18/07/2024', earnings: 'R$ 245,80', platform: 'Shutterstock + Getty Images' },
+  { id: 5, video: 'Natureza em Movimento', date: '15/07/2024', earnings: 'R$ 189,50', platform: 'Adobe Stock + Pond5' },
+  { id: 6, video: 'Tecnologia Futurista', date: '12/07/2024', earnings: 'R$ 156,20', platform: 'VideoHive + Dissolve' },
+  { id: 7, video: 'Pessoas em Ação', date: '10/07/2024', earnings: 'R$ 134,90', platform: 'Getty Images + Shutterstock' },
 ];
 
 const StockHistory: React.FC = () => {
@@ -16,15 +19,15 @@ const StockHistory: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-500">
                     <h3 className="font-semibold text-gray-500">Ganhos Totais</h3>
-                    <p className="text-3xl font-extrabold text-gray-800 mt-1">R$ 237,50</p>
+                    <p className="text-3xl font-extrabold text-gray-800 mt-1">R$ 2.847,50</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
                     <h3 className="font-semibold text-gray-500">Ganhos no Mês (Julho)</h3>
-                    <p className="text-3xl font-extrabold text-gray-800 mt-1">R$ 85,50</p>
+                    <p className="text-3xl font-extrabold text-gray-800 mt-1">R$ 994,90</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-teal-500">
                     <h3 className="font-semibold text-gray-500">Vídeos Vendidos</h3>
-                    <p className="text-3xl font-extrabold text-gray-800 mt-1">12</p>
+                    <p className="text-3xl font-extrabold text-gray-800 mt-1">127</p>
                 </div>
             </div>
 
@@ -38,9 +41,11 @@ const StockHistory: React.FC = () => {
                 <div className="bg-white p-6 rounded-lg shadow-lg">
                     <h3 className="text-xl font-bold text-gray-700 mb-4">Vídeos Mais Rentáveis</h3>
                     <ul className="space-y-3">
-                       <li className="flex justify-between items-center"><span className="font-semibold">1. Drone sobre a cidade</span><span className="font-bold text-green-600">R$ 125,00</span></li>
-                       <li className="flex justify-between items-center"><span className="font-semibold">2. Pôr do sol na praia</span><span className="font-bold text-green-600">R$ 75,00</span></li>
-                       <li className="flex justify-between items-center"><span className="font-semibold">3. Close-up de gotas de chuva</span><span className="font-bold text-green-600">R$ 37,50</span></li>
+                       <li className="flex justify-between items-center"><span className="font-semibold">1. Paisagem Urbana Noturna</span><span className="font-bold text-green-600">R$ 245,80</span></li>
+                       <li className="flex justify-between items-center"><span className="font-semibold">2. Natureza em Movimento</span><span className="font-bold text-green-600">R$ 189,50</span></li>
+                       <li className="flex justify-between items-center"><span className="font-semibold">3. Tecnologia Futurista</span><span className="font-bold text-green-600">R$ 156,20</span></li>
+                       <li className="flex justify-between items-center"><span className="font-semibold">4. Drone sobre montanhas</span><span className="font-bold text-green-600">R$ 156,00</span></li>
+                       <li className="flex justify-between items-center"><span className="font-semibold">5. Pessoas em Ação</span><span className="font-bold text-green-600">R$ 134,90</span></li>
                     </ul>
                 </div>
             </div>
@@ -53,6 +58,7 @@ const StockHistory: React.FC = () => {
                             <tr>
                                 <th className="p-3 font-semibold">Vídeo</th>
                                 <th className="p-3 font-semibold">Data da Venda</th>
+                                <th className="p-3 font-semibold">Plataformas</th>
                                 <th className="p-3 font-semibold">Seus Ganhos</th>
                             </tr>
                         </thead>
@@ -61,6 +67,7 @@ const StockHistory: React.FC = () => {
                                 <tr key={sale.id} className="border-b hover:bg-gray-50">
                                     <td className="p-3 font-semibold">{sale.video}</td>
                                     <td className="p-3">{sale.date}</td>
+                                    <td className="p-3 text-sm text-gray-600">{sale.platform}</td>
                                     <td className="p-3 font-bold text-green-700">{sale.earnings}</td>
                                 </tr>
                             ))}

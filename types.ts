@@ -122,6 +122,38 @@ export interface Endorsement {
     text: string;
 }
 
+export interface GameStats {
+    level: number;
+    points: number;
+    coursesCompleted: number;
+    projectsCompleted: number;
+    averageGrade: number;
+    attendanceRate: number;
+    streak: number;
+    totalHoursStudied: number;
+    badges: GameBadge[];
+    achievements: GameAchievement[];
+}
+
+export interface GameBadge {
+    id: string;
+    name: string;
+    description: string;
+    icon: React.ComponentType<any>;
+    rarity: 'common' | 'rare' | 'epic' | 'legendary';
+    earnedAt?: string;
+}
+
+export interface GameAchievement {
+    id: string;
+    title: string;
+    description: string;
+    progress: number;
+    maxProgress: number;
+    reward: number;
+    category: 'academic' | 'project' | 'social' | 'technical';
+}
+
 export interface ProfileData {
     name: string;
     title: string;
@@ -130,4 +162,5 @@ export interface ProfileData {
     skills: { name: string; level: number }[];
     projects: { id: number; title: string; description: string; img: string }[];
     endorsements: Endorsement[];
+    gameStats?: GameStats;
 }

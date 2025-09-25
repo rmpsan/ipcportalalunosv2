@@ -4,7 +4,6 @@ import Header from './components/Header';
 import AccessScreen from './views/AccessScreen';
 import IntensivePortal from './views/intensive/IntensivePortal';
 import EadPortal from './views/ead/EadPortal';
-import CustomCursor from './components/CustomCursor';
 import PublicCvView from './views/PublicCvView';
 import { initialProfileData } from './data/profileData';
 
@@ -49,7 +48,6 @@ const App: React.FC = () => {
 
   return (
     <>
-      <CustomCursor />
       <Header user={user} onLogout={handleLogout} />
       <main>
         {renderCurrentView()}

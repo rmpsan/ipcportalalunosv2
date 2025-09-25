@@ -16,8 +16,15 @@ const CourseDetailView: React.FC<CourseDetailViewProps> = ({ course, onBack }) =
                 {/* Main Content */}
                 <div className="lg:w-2/3">
                     {/* Video Player */}
-                    <div className="aspect-video bg-gray-900 rounded-lg shadow-lg flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 text-white/50" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" /></svg>
+                    <div className="aspect-video bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+                        <iframe 
+                            src="https://www.youtube.com/embed/laiLTJNT9LI" 
+                            title="IA Edita Sozinha no DaVinci Resolve! Editor Copilot e Triplique Sua Produtividade Tokens Gratis !"
+                            className="w-full h-full"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-6">{course.title}</h1>
                     <p className="text-lg text-gray-600 mt-2">Progresso: 25%</p>
