@@ -16,7 +16,7 @@ interface CourseCardProps {
 const CourseCard: React.FC<CourseCardProps> = ({ item, onSelect }) => {
     return (
         <div 
-            className="group w-64 flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer transform hover:scale-105 hover:z-10 transition-transform duration-300" 
+            className="group w-full rounded-lg overflow-hidden relative cursor-pointer transform hover:scale-105 hover:z-10 transition-transform duration-300" 
             onClick={() => onSelect({ title: item.title, instructor: item.instructor })}
         >
             <img src={item.img} alt={item.title} className="w-full h-36 object-cover" />

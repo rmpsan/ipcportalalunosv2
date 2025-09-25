@@ -3,7 +3,7 @@ import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
 import { AccessMode } from '../types';
 
 interface AccessScreenProps {
-  onLogin: (type: 'intensive' | 'ead', name?: string) => void;
+  onLogin: (type: 'intensive' | 'ead' | 'teacher', name?: string) => void;
 }
 
 const areasDeInteresse = ['Produção', 'Roteiro', 'Direção', 'IA Audiovisual', 'Pós-produção', 'Áudio'];
@@ -26,7 +26,7 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
       <p ref={addElement} className="reveal text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12" style={{ animationDelay: '0.2s' }}>
         Onde o talento da periferia se torna o futuro da comunicação premium e com propósito.
       </p>
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         <div ref={addElement} onClick={() => setMode(AccessMode.INTENSIVE_LOGIN)} className="reveal access-card p-8 rounded-lg cursor-pointer transition-all duration-300 bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-2xl font-bold mb-3 text-teal-400">Sou Aluno (Programa Intensivo)</h2>
           <p className="text-gray-300">Acesse seu dashboard como aluno do programa remunerado de 12 meses em São Paulo.</p>
@@ -35,51 +35,55 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
           <h2 className="text-2xl font-bold mb-3 text-cyan-400">Quero Acessar o Conteúdo (EAD)</h2>
           <p className="text-gray-300">Explore nosso acervo de aulas, palestras e workshops de todo o Brasil.</p>
         </div>
+        <div ref={addElement} onClick={() => setMode(AccessMode.TEACHER_LOGIN)} className="reveal access-card p-8 rounded-lg cursor-pointer transition-all duration-300 bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.8s' }}>
+          <h2 className="text-2xl font-bold mb-3 text-purple-400">Sou Professor</h2>
+          <p className="text-gray-300">Acesse o portal do professor para gerenciar turmas, notas e conteúdos didáticos.</p>
+        </div>
       </div>
     </div>
   );
 
   const renderIntensiveLogin = () => (
     <div className="w-full max-w-md mx-auto animate-[fadeInUp_0.5s_ease-out]">
-      <div className="bg-black/40 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
+      <div className="bg-black/40 backdrop-blur-lg p-6 sm:p-8 rounded-2xl border border-white/20">
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-teal-400 mb-2">Instituto Paulista de Cinema</h1>
-          <p className="text-sm text-gray-300">Portal do Aluno - Programa Intensivo</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-teal-400 mb-2">Instituto Paulista de Cinema</h1>
+          <p className="text-xs sm:text-sm text-gray-300">Portal do Aluno - Programa Intensivo</p>
         </div>
         
         {/* Credenciais de demonstração */}
-        <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-4 mb-6">
-          <h3 className="text-sm font-semibold text-teal-300 mb-2">📋 Credenciais de Demonstração</h3>
+        <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 sm:p-4 mb-6">
+          <h3 className="text-xs sm:text-sm font-semibold text-teal-300 mb-2">📋 Credenciais de Demonstração</h3>
           <div className="text-xs text-gray-300 space-y-1">
             <p><span className="font-medium">Email:</span> teste@institutopaulistadecinema.com.br</p>
             <p><span className="font-medium">Senha:</span> ipcine123</p>
           </div>
         </div>
 
-        <h2 className="text-xl font-bold text-center text-white mb-6">Acesso do Aluno</h2>
+        <h2 className="text-lg sm:text-xl font-bold text-center text-white mb-6">Acesso do Aluno</h2>
         <form onSubmit={(e) => { e.preventDefault(); onLogin('intensive'); }} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-300">Email ou CPF</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Email ou CPF</label>
             <input 
               type="text" 
               required 
               defaultValue="teste@institutopaulistadecinema.com.br"
-              className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" 
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-base touch-manipulation" 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300">Senha</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Senha</label>
             <input 
               type="password" 
               required 
               defaultValue="ipcine123"
-              className="mt-1 block w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-teal-500 focus:border-teal-500" 
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-base touch-manipulation" 
             />
           </div>
-          <button type="submit" className="w-full bg-teal-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-600 transition-all shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1">Entrar</button>
+          <button type="submit" className="w-full bg-teal-500 text-white font-bold py-4 px-4 rounded-lg hover:bg-teal-600 transition-all shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 touch-manipulation text-base">Entrar</button>
         </form>
         <div className="mt-6 pt-4 border-t border-gray-600">
-          <button onClick={() => setMode(AccessMode.CHOICE)} className="w-full text-sm text-gray-400 hover:text-teal-300 transition-colors">
+          <button onClick={() => setMode(AccessMode.CHOICE)} className="w-full text-sm text-gray-400 hover:text-teal-300 transition-colors py-2 touch-manipulation">
             Outras opções de acesso →
           </button>
         </div>
@@ -151,6 +155,54 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
     </div>
   );
 
+  const renderTeacherLogin = () => (
+    <div className="w-full max-w-md mx-auto animate-[fadeInUp_0.5s_ease-out]">
+      <div className="bg-black/40 backdrop-blur-lg p-6 sm:p-8 rounded-2xl border border-white/20">
+        <div className="text-center mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-purple-400 mb-2">Instituto Paulista de Cinema</h1>
+          <p className="text-xs sm:text-sm text-gray-300">Portal do Professor</p>
+        </div>
+        
+        {/* Credenciais de demonstração */}
+        <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-3 sm:p-4 mb-6">
+          <h3 className="text-xs sm:text-sm font-semibold text-purple-300 mb-2">📋 Credenciais de Demonstração</h3>
+          <div className="text-xs text-gray-300 space-y-1">
+            <p><span className="font-medium">Email:</span> professor@institutopaulistadecinema.com.br</p>
+            <p><span className="font-medium">Senha:</span> prof123</p>
+          </div>
+        </div>
+
+        <h2 className="text-lg sm:text-xl font-bold text-center text-white mb-6">Acesso do Professor</h2>
+        <form onSubmit={(e) => { e.preventDefault(); onLogin('teacher', 'Professor Demo'); }} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+            <input 
+              type="email" 
+              required 
+              defaultValue="professor@institutopaulistadecinema.com.br"
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-base touch-manipulation" 
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Senha</label>
+            <input 
+              type="password" 
+              required 
+              defaultValue="prof123"
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-base touch-manipulation" 
+            />
+          </div>
+          <button type="submit" className="w-full bg-purple-500 text-white font-bold py-4 px-4 rounded-lg hover:bg-purple-600 transition-all shadow-lg hover:shadow-purple-500/30 transform hover:-translate-y-1 touch-manipulation text-base">Entrar</button>
+        </form>
+        <div className="mt-6 pt-4 border-t border-gray-600">
+          <button onClick={() => setMode(AccessMode.CHOICE)} className="w-full text-sm text-gray-400 hover:text-purple-300 transition-colors py-2 touch-manipulation">
+            Outras opções de acesso →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
 
   const renderContent = () => {
     switch (mode) {
@@ -158,6 +210,8 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
         return renderIntensiveLogin();
       case AccessMode.EAD_HUB:
         return renderEadHub();
+      case AccessMode.TEACHER_LOGIN:
+        return renderTeacherLogin();
       case AccessMode.CHOICE:
       default:
         return renderChoice();
@@ -165,7 +219,7 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-800 bg-cover bg-center p-4" style={{ backgroundImage: `url('https://gov.institutopaulistadecinema.com.br/galeria/11.jpg')` }}>
+    <section className="min-h-screen flex items-center justify-center bg-gray-800 bg-cover bg-center p-4 safe-area-inset" style={{ backgroundImage: `url('https://gov.institutopaulistadecinema.com.br/galeria/11.jpg')` }}>
       <div className="absolute inset-0 bg-gray-900/70"></div>
       <div className="container mx-auto text-center text-white relative z-10">
         {renderContent()}

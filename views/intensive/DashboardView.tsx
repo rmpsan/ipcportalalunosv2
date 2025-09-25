@@ -89,36 +89,38 @@ const DashboardView: React.FC<DashboardViewProps> = ({ setActiveView, onSelectCo
     const formationProgress = 35; 
     
     return (
-        <div className="space-y-6 sm:space-y-8 animate-[fadeInUp_0.5s_ease-out] bg-gray-900 min-h-screen text-white">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 space-y-8 sm:space-y-12 lg:space-y-16 animate-[fadeInUp_0.5s_ease-out]">
             {/* Hero Section - Featured Course */}
-            <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 bg-gradient-to-r from-gray-900 via-gray-800 to-transparent overflow-hidden">
+            <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] bg-gradient-to-r from-gray-900 via-gray-800 to-transparent overflow-hidden rounded-xl shadow-2xl">
                 <img 
                     src="https://picsum.photos/seed/hero-course/1920/600" 
                     alt="Featured Course" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-40"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
-                <div className="relative z-10 flex items-center h-full px-3 sm:px-4 md:px-6 lg:px-8">
-                    <div className="max-w-xl sm:max-w-2xl">
-                        <span className="inline-block bg-red-600 text-white px-2 sm:px-3 py-1 rounded text-xs font-bold mb-2 sm:mb-3 md:mb-4">
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-900/30"></div>
+                <div className="relative z-10 flex items-center h-full px-6 sm:px-8 md:px-10 lg:px-12">
+                    <div className="w-full max-w-3xl">
+                        <span className="inline-block bg-red-600 text-white px-3 py-1.5 rounded-md text-xs sm:text-sm font-bold mb-3 md:mb-4 uppercase tracking-wide">
                             CURSO EM DESTAQUE
                         </span>
-                        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">Masterclass de Direção Cinematográfica</h1>
-                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-300 mb-3 sm:mb-4 md:mb-6 line-clamp-2 sm:line-clamp-3">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4 leading-tight text-white">
+                            Masterclass de Direção Cinematográfica
+                        </h1>
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 md:mb-8 line-clamp-2 sm:line-clamp-3 leading-relaxed">
                             Aprenda as técnicas avançadas de direção com os melhores profissionais do mercado. 
                             Uma jornada completa do roteiro à pós-produção.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4">
+                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                             <button 
                                 onClick={() => onSelectCourse({ title: 'Masterclass de Direção Cinematográfica', instructor: 'Prof. Ricardo Almeida' })}
-                                className="bg-white text-black px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 rounded font-bold hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base"
+                                className="bg-white text-black px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-lg font-bold hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-2 text-sm md:text-base touch-manipulation shadow-lg hover:shadow-xl transform hover:scale-105"
                             >
-                                <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M8 5v10l7-5z"/>
                                 </svg>
                                 Assistir Agora
                             </button>
-                            <button className="bg-gray-600/80 text-white px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 rounded font-bold hover:bg-gray-600 transition-colors text-xs sm:text-sm md:text-base">
+                            <button className="bg-gray-700/80 backdrop-blur-sm text-white px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-lg font-bold hover:bg-gray-600/80 transition-all duration-200 text-sm md:text-base touch-manipulation border border-gray-600/50 hover:border-gray-500/50">
                                 + Minha Lista
                             </button>
                         </div>
@@ -126,61 +128,46 @@ const DashboardView: React.FC<DashboardViewProps> = ({ setActiveView, onSelectCo
                 </div>
             </div>
 
-            <div className="px-3 sm:px-4 md:px-6 lg:px-8 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12">
+            <div className="space-y-8 sm:space-y-10 md:space-y-12">
                 {/* Continue Assistindo */}
-                <section>
-                    <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
-                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Continue de onde parou</h2>
-                        <div className="hidden sm:flex gap-2">
-                            <button 
-                                onClick={() => {
-                                    const container = document.getElementById('continue-watching-carousel');
-                                    if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-                                }}
-                                className="p-1.5 sm:p-2 rounded-full bg-gray-800/50 hover:bg-gray-700 transition-colors"
-                            >
-                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button 
-                                onClick={() => {
-                                    const container = document.getElementById('continue-watching-carousel');
-                                    if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-                                }}
-                                className="p-1.5 sm:p-2 rounded-full bg-gray-800/50 hover:bg-gray-700 transition-colors"
-                            >
-                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="continue-watching-carousel" className="flex gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-3 sm:pb-4 scrollbar-hide carousel-smooth">
+                <section className="mb-8 sm:mb-12">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900">Continue Assistindo</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {continueWatching.map((course, index) => (
                             <div 
                                 key={index}
-                                className="flex-shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer group"
+                                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 touch-manipulation cursor-pointer group w-full"
                                 onClick={() => onSelectCourse({ title: course.title, instructor: course.instructor })}
                             >
-                                <div className="relative">
-                                    <img src={course.thumbnail} alt={course.title} className="w-full h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 object-cover" />
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M8 5v10l7-5z"/>
-                                        </svg>
-                                    </div>
-                                    <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
-                                        <div className="bg-red-600 h-0.5 sm:h-1 rounded-full">
-                                            <div className="bg-red-400 h-0.5 sm:h-1 rounded-full" style={{width: `${course.progress}%`}}></div>
+                                    <div className="relative">
+                                        <img 
+                                            src={course.thumbnail} 
+                                            alt={course.title}
+                                            className="w-full h-36 sm:h-40 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button className="bg-white/95 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-white transition-colors shadow-lg">
+                                                Continuar
+                                            </button>
+                                        </div>
+                                        <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded-md text-xs font-medium">
+                                            {course.progress}%
                                         </div>
                                     </div>
-                                </div>
-                                <div className="p-2 sm:p-3 md:p-4">
-                                    <h3 className="font-bold text-white mb-1 text-xs sm:text-sm md:text-base line-clamp-2">{course.title}</h3>
-                                    <p className="text-gray-400 text-xs sm:text-sm mb-1 sm:mb-2">{course.instructor}</p>
-                                    <p className="text-gray-500 text-xs">{course.duration}</p>
-                                </div>
+                                    <div className="p-4 sm:p-5 md:p-6">
+                                        <h3 className="font-bold text-base sm:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors">{course.title}</h3>
+                                        <p className="text-gray-600 text-sm mb-3 line-clamp-1">{course.instructor}</p>
+                                        <div className="flex items-center justify-between mb-3">
+                                            <span className="text-xs sm:text-sm text-gray-500">{course.duration}</span>
+                                            <span className="text-xs sm:text-sm font-medium text-blue-600">{course.progress}% concluído</span>
+                                        </div>
+                                        <div className="w-full bg-gray-200 rounded-full h-2">
+                                            <div 
+                                                className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500" 
+                                                style={{ width: `${course.progress}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
                             </div>
                         ))}
                     </div>
@@ -188,159 +175,165 @@ const DashboardView: React.FC<DashboardViewProps> = ({ setActiveView, onSelectCo
 
                 {/* Cards das Principais Funcionalidades */}
                 <section>
-                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Explore outras funcionalidades</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900">Explore outras funcionalidades</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                         {/* Catálogo */}
                         <div 
-                            className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
+                            className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-6 sm:p-8 cursor-pointer hover:scale-105 transition-all duration-300 group touch-manipulation shadow-lg hover:shadow-2xl min-h-[160px] flex flex-col justify-between"
                             onClick={() => setActiveView('catalog')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Catálogo de Cursos</h3>
-                            <p className="text-blue-100 text-xs sm:text-sm">Explore todos os cursos disponíveis</p>
+                            <div>
+                                <h3 className="text-white font-bold text-lg mb-2">Catálogo de Cursos</h3>
+                                <p className="text-blue-100 text-sm leading-relaxed">Explore todos os cursos disponíveis</p>
+                            </div>
                         </div>
 
                         {/* Oportunidades */}
                         <div 
-                            className="bg-gradient-to-br from-green-600 to-green-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
-                            onClick={() => setActiveView('opportunities')}
+                            className="bg-gradient-to-br from-green-600 to-green-800 rounded-xl p-6 sm:p-8 cursor-pointer hover:scale-105 transition-all duration-300 group touch-manipulation shadow-lg hover:shadow-2xl min-h-[160px] flex flex-col justify-between"
+                            onClick={() => setActiveView('opportunities-hub')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Oportunidades</h3>
-                            <p className="text-green-100 text-xs sm:text-sm">Vagas e projetos disponíveis</p>
+                            <div>
+                                <h3 className="text-white font-bold text-lg mb-2">Oportunidades</h3>
+                                <p className="text-green-100 text-sm leading-relaxed">Vagas e projetos disponíveis</p>
+                            </div>
                         </div>
 
                         {/* Hub IA */}
                         <div 
-                            className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
+                            className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-6 sm:p-8 cursor-pointer hover:scale-105 transition-all duration-300 group touch-manipulation shadow-lg hover:shadow-2xl min-h-[160px] flex flex-col justify-between"
                             onClick={() => setActiveView('ia-hub')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.423l-.548-.547z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Hub de IA</h3>
-                            <p className="text-purple-100 text-xs sm:text-sm">Ferramentas de inteligência artificial</p>
+                            <div>
+                                <h3 className="text-white font-bold text-lg mb-2">Hub de IA</h3>
+                                <p className="text-purple-100 text-sm leading-relaxed">Ferramentas de inteligência artificial</p>
+                            </div>
                         </div>
 
-                        {/* Ferramentas e Carreira */}
+                        {/* Ferramentas */}
                         <div 
-                            className="bg-gradient-to-br from-orange-600 to-orange-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
-                            onClick={() => setActiveView('tools-career')}
+                            className="bg-gradient-to-br from-orange-600 to-orange-800 rounded-xl p-6 sm:p-8 cursor-pointer hover:scale-105 transition-all duration-300 group touch-manipulation shadow-lg hover:shadow-2xl min-h-[160px] flex flex-col justify-between"
+                            onClick={() => setActiveView('tools-and-career')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Ferramentas</h3>
-                            <p className="text-orange-100 text-xs sm:text-sm">Recursos para sua carreira</p>
+                            <h3 className="text-white font-bold text-lg mb-2">Ferramentas</h3>
+                            <p className="text-orange-100 text-sm">Recursos para sua carreira</p>
                         </div>
 
                         {/* Agendamento */}
                         <div 
-                            className="bg-gradient-to-br from-red-600 to-red-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
+                            className="bg-gradient-to-br from-red-600 to-red-800 rounded-xl p-6 cursor-pointer hover:scale-105 transition-transform group touch-manipulation"
                             onClick={() => setActiveView('equipment-scheduling')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Agendamentos</h3>
-                            <p className="text-red-100 text-xs sm:text-sm">Reserve equipamentos e salas</p>
+                            <h3 className="text-white font-bold text-lg mb-2">Agendamentos</h3>
+                            <p className="text-red-100 text-sm">Reserve equipamentos e salas</p>
                         </div>
 
                         {/* Produção */}
                         <div 
-                            className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
+                            className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-xl p-6 cursor-pointer hover:scale-105 transition-transform group touch-manipulation"
                             onClick={() => setActiveView('production')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Produção</h3>
-                            <p className="text-indigo-100 text-xs sm:text-sm">Gerencie seus projetos</p>
+                            <h3 className="text-white font-bold text-lg mb-2">Produção</h3>
+                            <p className="text-indigo-100 text-sm">Gerencie seus projetos</p>
                         </div>
 
-                        {/* Meus Uploads */}
+                        {/* Networking */}
                         <div 
-                            className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
-                            onClick={() => setActiveView('my-uploads')}
+                            className="bg-gradient-to-br from-pink-600 to-pink-800 rounded-xl p-6 cursor-pointer hover:scale-105 transition-transform group touch-manipulation"
+                            onClick={() => setActiveView('networking')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Meus Uploads</h3>
-                            <p className="text-teal-100 text-xs sm:text-sm">Gerencie seus arquivos</p>
+                            <h3 className="text-white font-bold text-lg mb-2">Networking</h3>
+                            <p className="text-pink-100 text-sm">Conecte-se com profissionais</p>
                         </div>
 
-                        {/* Portal Intensivo */}
+                        {/* Sistema de Pontos */}
                         <div 
-                            className="bg-gradient-to-br from-pink-600 to-pink-800 rounded-xl p-4 sm:p-6 cursor-pointer hover:scale-105 transition-transform group"
-                            onClick={() => setActiveView('intensive-portal')}
+                            className="bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-xl p-6 cursor-pointer hover:scale-105 transition-transform group touch-manipulation"
+                            onClick={() => setActiveView('points-system')}
                         >
-                            <div className="flex items-center justify-between mb-3 sm:mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-lg">
-                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="bg-white/20 p-3 rounded-lg">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                     </svg>
                                 </div>
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2">Portal Intensivo</h3>
-                            <p className="text-pink-100 text-xs sm:text-sm">Cursos intensivos especiais</p>
+                            <h3 className="text-white font-bold text-lg mb-2">Sistema de Pontos</h3>
+                            <p className="text-yellow-100 text-sm">Acompanhe seu progresso</p>
                         </div>
                     </div>
                 </section>
@@ -383,58 +376,38 @@ const DashboardView: React.FC<DashboardViewProps> = ({ setActiveView, onSelectCo
                 </section>
 
                 {/* Novos Cursos */}
-                <section>
-                    <div className="flex items-center justify-between mb-4 sm:mb-6">
-                        <h2 className="text-xl sm:text-2xl font-bold">Novos cursos</h2>
-                        <div className="flex gap-2">
-                            <button 
-                                onClick={() => {
-                                    const container = document.getElementById('new-courses-carousel');
-                                    if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-                                }}
-                                className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700 transition-colors"
-                            >
-                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button 
-                                onClick={() => {
-                                    const container = document.getElementById('new-courses-carousel');
-                                    if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-                                }}
-                                className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700 transition-colors"
-                            >
-                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="new-courses-carousel" className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 scrollbar-hide carousel-smooth">
+                <section className="mb-8 sm:mb-12">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900">Novos Cursos</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {newCourses.map((course, index) => (
                             <div 
                                 key={index}
-                                className="flex-shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer group"
+                                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 touch-manipulation cursor-pointer group w-full"
                                 onClick={() => onSelectCourse({ title: course.title, instructor: course.instructor })}
                             >
-                                <div className="relative">
-                                    <img src={course.thumbnail} alt={course.title} className="w-full h-24 sm:h-28 md:h-32 lg:h-36 object-cover" />
-                                    <div className="absolute top-2 left-2">
-                                        <span className="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
-                                            {course.releaseDate}
-                                        </span>
+                                    <div className="relative">
+                                        <img 
+                                            src={course.thumbnail} 
+                                            alt={course.title}
+                                            className="w-full h-36 sm:h-40 md:h-48 object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button className="bg-white/90 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-white transition-colors shadow-lg">
+                                                Começar
+                                            </button>
+                                        </div>
+                                        <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-md">
+                                            Novo
+                                        </div>
                                     </div>
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M8 5v10l7-5z"/>
-                                        </svg>
+                                    <div className="p-4 sm:p-5 md:p-6">
+                                        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-gray-900">{course.title}</h3>
+                                        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{course.instructor}</p>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm text-gray-500">{course.instructor}</span>
+                                            <span className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{course.releaseDate}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="p-3 sm:p-4">
-                                    <h3 className="font-bold text-white mb-1 text-xs sm:text-sm line-clamp-2">{course.title}</h3>
-                                    <p className="text-gray-400 text-xs line-clamp-1">{course.instructor}</p>
-                                </div>
                             </div>
                         ))}
                     </div>

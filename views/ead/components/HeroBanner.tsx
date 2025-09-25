@@ -6,20 +6,20 @@ interface HeroBannerProps {
 
 const HeroBanner: React.FC<HeroBannerProps> = ({ onSelectCourse }) => {
     return (
-        <div className="h-[60vh] relative flex items-end p-6 md:p-10 text-white bg-cover bg-center" style={{ backgroundImage: `url('https://picsum.photos/seed/hero-ai/1200/800')` }}>
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
-            <div className="relative z-10 max-w-2xl">
-                <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-                    IA Audiovisual: Domine a Tecnologia do Futuro
+        <div className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] bg-gradient-to-r from-teal-600 to-blue-600 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative z-10 text-center w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+                    Catálogo EAD
                 </h1>
-                <p className="mt-4 text-lg text-gray-300">
-                    Aprenda na primeira escola de IA audiovisual para periferias do mundo e prepare-se para um salário projetado de R$ 8.000.
+                <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
+                    Explore nossa biblioteca completa de cursos online e acelere seu aprendizado
                 </p>
                 <button 
-                    onClick={() => onSelectCourse({ title: 'Trilha Completa de IA Audiovisual', instructor: 'Equipe de Inovação IPC' })}
-                    className="mt-6 bg-white text-gray-900 font-bold py-3 px-8 rounded-md hover:bg-gray-200 transition-colors text-lg"
+                    className="bg-white text-teal-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colors"
+                    onClick={() => onSelectCourse({ title: "Curso em Destaque", instructor: "Instrutor Principal" })}
                 >
-                    Começar a Trilha
+                    Começar Agora
                 </button>
             </div>
         </div>

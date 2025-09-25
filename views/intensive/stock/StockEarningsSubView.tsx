@@ -224,7 +224,9 @@ const StockEarningsSubView: React.FC = () => {
                         <h3 className="text-xl font-bold text-gray-800">Usos Internos Recentes</h3>
                         <p className="text-sm text-gray-600 mt-1">Downloads gratuitos via Portal do Aluno</p>
                     </div>
-                    <div className="overflow-x-auto">
+                    
+                    {/* Desktop Table View */}
+                    <div className="hidden md:block overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-gray-50">
                                 <tr>
@@ -254,6 +256,34 @@ const StockEarningsSubView: React.FC = () => {
                             </tbody>
                         </table>
                     </div>
+
+                    {/* Mobile Card View */}
+                    <div className="md:hidden p-4 space-y-4">
+                        {recentUsage.map(usage => (
+                            <div key={usage.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div className="space-y-2">
+                                    <div>
+                                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Mídia</span>
+                                        <div className="font-medium text-gray-900 text-sm mt-1">{usage.video}</div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Projeto</span>
+                                        <div className="text-sm text-gray-600 mt-1">{usage.project}</div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Aluno</span>
+                                            <div className="text-sm text-gray-600 mt-1">{usage.student}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Data</span>
+                                            <div className="text-sm text-gray-600 mt-1">{new Date(usage.date).toLocaleDateString('pt-BR')}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* External Sales Table */}
@@ -262,7 +292,9 @@ const StockEarningsSubView: React.FC = () => {
                         <h3 className="text-xl font-bold text-gray-800">Vendas Externas Recentes</h3>
                         <p className="text-sm text-gray-600 mt-1">Vendas via agentes de stock</p>
                     </div>
-                    <div className="overflow-x-auto">
+                    
+                    {/* Desktop Table View */}
+                    <div className="hidden md:block overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-gray-50">
                                 <tr>
@@ -291,6 +323,34 @@ const StockEarningsSubView: React.FC = () => {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    {/* Mobile Card View */}
+                    <div className="md:hidden p-4 space-y-4">
+                        {externalSales.map(sale => (
+                            <div key={sale.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div className="space-y-2">
+                                    <div>
+                                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Mídia</span>
+                                        <div className="font-medium text-gray-900 text-sm mt-1">{sale.video}</div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Plataforma</span>
+                                            <div className="text-sm font-medium text-blue-600 mt-1">{sale.platform}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</span>
+                                            <div className="font-semibold text-teal-600 mt-1">R$ {sale.amount.toFixed(2)}</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Data</span>
+                                        <div className="text-sm text-gray-600 mt-1">{new Date(sale.date).toLocaleDateString('pt-BR')}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

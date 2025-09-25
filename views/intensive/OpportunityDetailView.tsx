@@ -57,22 +57,38 @@ const OpportunityDetailView: React.FC<OpportunityDetailViewProps> = ({ opportuni
                         </div>
                     </div>
                     <div className="lg:col-span-1">
-                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 sticky top-28">
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Candidatar-se</h3>
+                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-6 sticky top-28">
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Candidatar-se</h3>
                             {isSubmitted ? <SuccessMessage /> : (
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                                     <div>
-                                        <label htmlFor="role" className="block text-sm font-medium text-gray-700">Selecione a vaga</label>
-                                        <select id="role" value={selectedRole} onChange={e => setSelectedRole(e.target.value)} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                        <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">Selecione a vaga</label>
+                                        <select 
+                                            id="role" 
+                                            value={selectedRole} 
+                                            onChange={e => setSelectedRole(e.target.value)} 
+                                            required 
+                                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 py-3 px-4 text-base touch-manipulation"
+                                        >
                                             <option value="" disabled>-- Escolha uma opção --</option>
                                             {project.roles.map(role => <option key={role} value={role}>{role}</option>)}
                                         </select>
                                     </div>
                                     <div>
-                                        <label htmlFor="cover-letter" className="block text-sm font-medium text-gray-700">Mensagem de Apresentação</label>
-                                        <textarea id="cover-letter" value={coverLetter} onChange={e => setCoverLetter(e.target.value)} rows={4} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500" placeholder="Por que você é a pessoa ideal para esta vaga?"></textarea>
+                                        <label htmlFor="cover-letter" className="block text-sm font-medium text-gray-700 mb-2">Mensagem de Apresentação</label>
+                                        <textarea 
+                                            id="cover-letter" 
+                                            value={coverLetter} 
+                                            onChange={e => setCoverLetter(e.target.value)} 
+                                            rows={4} 
+                                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 py-3 px-4 text-base touch-manipulation resize-none" 
+                                            placeholder="Por que você é a pessoa ideal para esta vaga?"
+                                        ></textarea>
                                     </div>
-                                    <button type="submit" className="w-full bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-700 transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                    <button 
+                                        type="submit" 
+                                        className="w-full bg-teal-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-teal-700 transition-all text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 touch-manipulation"
+                                    >
                                         Enviar Candidatura
                                     </button>
                                 </form>

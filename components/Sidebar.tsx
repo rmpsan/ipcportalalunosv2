@@ -52,7 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView, onLogout }
   );
 
   return (
-    <aside className="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-300 p-4 hidden md:flex flex-col min-h-screen shadow-2xl" style={{ width: '220px', minWidth: '220px', maxWidth: '220px' }}>
+    <aside className="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-300 p-4 hidden lg:flex flex-col min-h-screen shadow-2xl" style={{ width: '220px', minWidth: '220px', maxWidth: '220px' }}>
       {/* Header */}
       <div className="mb-6">
         <h2 className="font-bold text-lg text-white mb-1">Portal do Aluno</h2>

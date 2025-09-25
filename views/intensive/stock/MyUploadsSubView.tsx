@@ -268,13 +268,13 @@ const UploadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                             </label>
                             <input 
                                 type="text" 
-                                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
                                 placeholder={mediaType === 'photo' ? "Ex: Arquitetura moderna" : "Ex: Pôr do sol na praia"} 
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Categoria</label>
-                            <select className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+                            <select className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation">
                                 <option>Natureza</option>
                                 <option>Urbano</option>
                                 <option>Pessoas</option>
@@ -288,14 +288,18 @@ const UploadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Descrição</label>
                         <textarea 
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                            className="w-full border border-gray-300 rounded-lg px-4 py-3 h-24 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation resize-none" 
                             placeholder={mediaType === 'photo' ? "Descreva sua foto..." : "Descreva seu vídeo..."}
                         ></textarea>
                     </div>
 
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Tags (separadas por vírgula)</label>
-                        <input type="text" className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="praia, pôr do sol, natureza" />
+                        <input 
+                            type="text" 
+                            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                            placeholder="praia, pôr do sol, natureza" 
+                        />
                     </div>
                 </div>
 

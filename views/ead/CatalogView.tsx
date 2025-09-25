@@ -41,23 +41,25 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onSelectCourse }) => {
     const [activeTipo, setActiveTipo] = useState('Cursos');
 
     return (
-        <div className="animate-[fadeInUp_0.5s_ease-out] bg-gray-900 text-white min-h-screen -mx-6 md:-mx-10 -mt-6 md:-mt-10">
+        <div className="animate-[fadeInUp_0.5s_ease-out] bg-gray-900 text-white min-h-screen">
             <HeroBanner onSelectCourse={onSelectCourse} />
 
-            <div className="px-6 md:px-10 py-6 space-y-8">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 space-y-8 sm:space-y-12">
                 {/* Filters */}
-                <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-                    <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 justify-between items-start lg:items-center">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                         {trilhas.map(trilha => (
-                             <button key={trilha} onClick={() => setActiveTrilha(trilha)} className={`py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTrilha === trilha ? 'bg-white text-gray-900' : 'bg-transparent hover:bg-white/10'}`}>{trilha}</button>
+                             <button key={trilha} onClick={() => setActiveTrilha(trilha)} className={`py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm font-semibold transition-colors ${activeTrilha === trilha ? 'bg-white text-gray-900' : 'bg-transparent hover:bg-white/10'}`}>{trilha}</button>
                         ))}
-                         <span className="border-l border-gray-600 h-6 mx-2"></span>
-                         {tipos.map(tipo => (
-                             <button key={tipo} onClick={() => setActiveTipo(tipo)} className={`py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTipo === tipo ? 'text-white' : 'text-gray-400 hover:text-white'}`}>{tipo}</button>
-                        ))}
+                         <span className="border-l border-gray-600 h-6 mx-2 hidden sm:block"></span>
+                         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                             {tipos.map(tipo => (
+                                 <button key={tipo} onClick={() => setActiveTipo(tipo)} className={`py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm font-semibold transition-colors ${activeTipo === tipo ? 'text-white' : 'text-gray-400 hover:text-white'}`}>{tipo}</button>
+                            ))}
+                         </div>
                     </div>
-                    <div className="relative w-full md:w-auto">
-                        <input type="text" placeholder="Buscar por tema, instrutor..." className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-md py-2 px-4 w-full md:w-64 focus:ring-2 focus:ring-teal-500 focus:outline-none"/>
+                    <div className="relative w-full lg:w-auto lg:min-w-[280px]">
+                        <input type="text" placeholder="Buscar por tema, instrutor..." className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-md py-2 px-4 pr-10 w-full focus:ring-2 focus:ring-teal-500 focus:outline-none"/>
                         <svg className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
                     </div>
                 </div>

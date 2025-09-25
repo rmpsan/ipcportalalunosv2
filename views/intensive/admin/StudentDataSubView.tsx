@@ -52,11 +52,105 @@ const StudentDataSubView: React.FC = () => {
                     </div>
                 </div>
                 {isEditing && (
-                    <div className="mt-6 text-right">
-                        <button type="submit" className="bg-teal-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-teal-700 transition-colors">
-                            Salvar Alterações
-                        </button>
-                    </div>
+                    <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Nome Completo</label>
+                                <input 
+                                    type="text" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                    placeholder="Digite o nome completo"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                                <input 
+                                    type="email" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                    placeholder="email@exemplo.com"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Telefone</label>
+                                <input 
+                                    type="tel" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                    placeholder="(11) 99999-9999"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Data de Nascimento</label>
+                                <input 
+                                    type="date" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Endereço</label>
+                                <input 
+                                    type="text" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                    placeholder="Rua, número, bairro"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Cidade</label>
+                                <input 
+                                    type="text" 
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation" 
+                                    placeholder="Nome da cidade"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Estado</label>
+                                <select className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent touch-manipulation">
+                                    <option value="">Selecione o estado</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="TO">Tocantins</option>
+                                    <option value="AP">Amapá</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row justify-end gap-3 pt-6 border-t border-gray-200">
+                            <button 
+                                type="button"
+                                className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors text-base touch-manipulation"
+                            >
+                                Cancelar
+                            </button>
+                            <button 
+                                type="submit"
+                                className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-base touch-manipulation"
+                            >
+                                Salvar Dados
+                            </button>
+                        </div>
+                    </>
                 )}
             </form>
         </div>

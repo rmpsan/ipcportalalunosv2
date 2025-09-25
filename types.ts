@@ -2,19 +2,42 @@ export enum AppView {
   ACCESS = 'ACCESS',
   INTENSIVE_PORTAL = 'INTENSIVE_PORTAL',
   EAD_PORTAL = 'EAD_PORTAL',
+  TEACHER_PORTAL = 'TEACHER_PORTAL',
   PUBLIC_CV = 'PUBLIC_CV',
 }
 
 export enum AccessMode {
-  CHOICE = 'CHOICE',
-  INTENSIVE_LOGIN = 'INTENSIVE_LOGIN',
-  EAD_HUB = 'EAD_HUB',
+    CHOICE = 'choice',
+    INTENSIVE_LOGIN = 'intensive_login',
+    EAD_HUB = 'ead_hub',
+    TEACHER_LOGIN = 'teacher_login'
 }
 
 
 export interface User {
   name: string;
-  type: 'intensive' | 'ead';
+  type: 'intensive' | 'ead' | 'teacher';
+}
+
+export enum TeacherView {
+    DASHBOARD = 'dashboard',
+    IA_HUB = 'ia-hub',
+    PRODUCTION = 'production',
+    TRAINING = 'training',
+    CAREER = 'career',
+    EQUIPMENT = 'equipment',
+    CATALOG = 'catalog',
+    COURSE_DETAIL = 'course-detail',
+    STUDENTS = 'students',
+    STUDENT_DETAIL = 'student-detail',
+    GRADES = 'grades',
+    NETWORKING = 'networking',
+    POINTS = 'points',
+    ADMIN = 'admin',
+    STOCK = 'stock',
+    FINANCIAL = 'financial',
+    ANALYTICS = 'analytics',
+    COMMUNICATION = 'communication',
 }
 
 export enum IntensiveView {

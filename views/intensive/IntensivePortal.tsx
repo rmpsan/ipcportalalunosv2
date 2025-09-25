@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { AppView, IntensiveView, ProfileData, Job, Opportunity } from '../../types';
 import Sidebar from '../../components/Sidebar';
+import MobileSidebar from '../../components/MobileSidebar';
 import DashboardView from './DashboardView';
 import IAHubView from './IAHubView';
 import ProductionView from './ProductionView';
@@ -116,14 +117,15 @@ const IntensivePortal: React.FC<IntensivePortalProps> = ({ onNavigate, profileDa
 
     return (
         <section className="min-h-screen bg-gray-100">
+            <MobileSidebar activeView={activeView} setActiveView={setActiveView} onLogout={handleLogout} />
             <div className="flex">
                 <Sidebar activeView={activeView} setActiveView={setActiveView} onLogout={handleLogout} />
-                <div className="flex-1">
+                <div className="flex-1 min-h-screen">
                     {/* Remove padding for certain views to allow full-width content */}
                     <div className={
                         [IntensiveView.CATALOG, IntensiveView.COURSE_DETAIL, IntensiveView.JOB_DETAIL, IntensiveView.OPPORTUNITY_DETAIL].includes(activeView) 
-                        ? '' 
-                        : 'p-6 md:p-10'
+                        ? 'pt-16 lg:pt-0' 
+                        : 'p-4 pt-16 lg:p-6 lg:pt-10'
                     }>
                          {renderActiveView()}
                     </div>
