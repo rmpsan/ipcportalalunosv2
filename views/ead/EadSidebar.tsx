@@ -10,9 +10,9 @@ interface EadSidebarProps {
 
 const EadSidebar: React.FC<EadSidebarProps> = ({ activeView, setActiveView, onLogout }) => {
   return (
-    <aside className="w-64 bg-gray-800 text-gray-300 p-6 hidden md:flex flex-col min-h-screen">
-      <h2 className="font-bold text-xl mb-8 text-white">Portal EAD Brasil</h2>
-      <nav className="space-y-2 flex-grow">
+    <aside className="bg-gray-800 text-gray-300 p-4 hidden md:flex flex-col min-h-screen" style={{ width: '200px', minWidth: '200px', maxWidth: '200px' }}>
+      <h2 className="font-bold text-lg mb-6 text-white">Portal EAD Brasil</h2>
+      <nav className="space-y-1 flex-grow">
         {EAD_SIDEBAR_LINKS.map(({ id, label, icon }) => (
           <a
             key={id}
@@ -21,7 +21,7 @@ const EadSidebar: React.FC<EadSidebarProps> = ({ activeView, setActiveView, onLo
               e.preventDefault();
               setActiveView(id);
             }}
-            className={`flex items-center gap-3 py-2 px-4 rounded-lg transition-all duration-200 ${
+            className={`flex items-center gap-2 py-2 px-3 rounded-lg transition-all duration-200 text-sm ${
               activeView === id ? 'bg-cyan-500 text-white translate-x-1' : 'hover:bg-gray-700 hover:text-white'
             }`}
           >
@@ -37,7 +37,7 @@ const EadSidebar: React.FC<EadSidebarProps> = ({ activeView, setActiveView, onLo
             e.preventDefault();
             onLogout();
           }}
-          className="flex items-center gap-3 py-2 px-4 rounded-lg transition-colors hover:bg-gray-700 hover:text-white"
+          className="flex items-center gap-2 py-2 px-3 rounded-lg transition-colors hover:bg-gray-700 hover:text-white text-sm"
         >
           {ICONS.logout}
           Sair

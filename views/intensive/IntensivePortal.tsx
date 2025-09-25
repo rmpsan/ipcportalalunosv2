@@ -15,6 +15,9 @@ import FinancialView from './FinancialView';
 import JobDetailView from './JobDetailView';
 import OpportunitiesHubView from './OpportunitiesHubView';
 import OpportunityDetailView from './OpportunityDetailView';
+import GradesAndFeedbackView from './GradesAndFeedbackView';
+import NetworkingView from './NetworkingView';
+import PointsSystemView from './PointsSystemView';
 
 interface IntensivePortalProps {
     onNavigate: (view: AppView) => void;
@@ -93,6 +96,12 @@ const IntensivePortal: React.FC<IntensivePortalProps> = ({ onNavigate, profileDa
                     return <OpportunitiesHubView onSelectOpportunity={handleSelectOpportunity} />;
                 }
                 return <OpportunityDetailView opportunity={selectedOpportunity} onBack={handleBackToOpportunities} />;
+            case IntensiveView.GRADES_FEEDBACK:
+                return <GradesAndFeedbackView />;
+            case IntensiveView.NETWORKING:
+                return <NetworkingView />;
+            case IntensiveView.POINTS:
+                return <PointsSystemView />;
             case IntensiveView.ADMIN:
                 return <AdminView />;
             case IntensiveView.STOCK:

@@ -32,6 +32,9 @@ export enum IntensiveView {
     JOB_DETAIL = 'job-detail',
     OPPORTUNITIES = 'opportunities',
     OPPORTUNITY_DETAIL = 'opportunity-detail',
+    GRADES_FEEDBACK = 'grades-feedback',
+    NETWORKING = 'networking',
+    POINTS = 'points',
 }
 
 export interface Job {
@@ -101,11 +104,17 @@ export enum IAHubSubView {
     PLAYGROUND = 'ia-playground',
     TRILHA = 'ia-trilha',
     RECURSOS = 'ia-recursos',
+    VIDEO_AI = 'video-ai',
+    TEMPLATES = 'templates',
 }
 
 export enum LlmProvider {
     CLAUDE = 'claude',
     CHATGPT = 'chatgpt',
+    GEMINI = 'gemini',
+    LLAMA = 'llama',
+    MISTRAL = 'mistral',
+    PERPLEXITY = 'perplexity',
 }
 
 export interface ChatMessage {

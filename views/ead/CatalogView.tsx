@@ -41,7 +41,7 @@ const CatalogView: React.FC<CatalogViewProps> = ({ onSelectCourse }) => {
     const [activeTipo, setActiveTipo] = useState('Cursos');
 
     return (
-        <div className="animate-[fadeInUp_0.5s_ease-out] -m-6 md:-m-10 bg-gray-900 text-white min-h-screen">
+        <div className="animate-[fadeInUp_0.5s_ease-out] bg-gray-900 text-white min-h-screen -mx-6 md:-mx-10 -mt-6 md:-mt-10">
             <HeroBanner onSelectCourse={onSelectCourse} />
 
             <div className="px-6 md:px-10 py-6 space-y-8">
