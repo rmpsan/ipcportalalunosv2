@@ -1,0 +1,5 @@
+{
+  "name": "Portal do Aluno - IPC",
+  "description": "A comprehensive student portal for Instituto Paulista de Cinema (IPC) students, providing access to dashboards, AI tools, course materials, and career resources for both intensive and EAD programs.",
+  "requestFramePermissions": []
+}
