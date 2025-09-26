@@ -5,6 +5,7 @@ import AccessScreen from './views/AccessScreen';
 import IntensivePortal from './views/intensive/IntensivePortal';
 import EadPortal from './views/ead/EadPortal';
 import TeacherPortal from './views/teacher/TeacherPortal';
+import CompanyPortal from './views/company/CompanyPortal';
 import PublicCvView from './views/PublicCvView';
 import { initialProfileData } from './data/profileData';
 
@@ -13,7 +14,7 @@ const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
 
-  const handleLogin = useCallback((type: 'intensive' | 'ead' | 'teacher', name?: string) => {
+  const handleLogin = useCallback((type: 'intensive' | 'ead' | 'teacher' | 'company', name?: string) => {
     if (type === 'intensive') {
       // In a real app, you'd fetch user data here. We'll use the default profile name.
       setUser({ name: profileData.name, type: 'intensive' });
@@ -21,6 +22,9 @@ const App: React.FC = () => {
     } else if (type === 'teacher') {
       setUser({ name: name || 'Professor', type: 'teacher' });
       setCurrentView(AppView.TEACHER_PORTAL);
+    } else if (type === 'company') {
+      setUser({ name: name || 'Empresa', type: 'company' });
+      setCurrentView(AppView.COMPANY_PORTAL);
     } else {
       setUser({ name: name || 'Visitante EAD', type: 'ead' });
       setCurrentView(AppView.EAD_PORTAL);
@@ -44,6 +48,8 @@ const App: React.FC = () => {
         return <EadPortal />;
       case AppView.TEACHER_PORTAL:
         return <TeacherPortal onLogout={handleLogout} />;
+      case AppView.COMPANY_PORTAL:
+        return <CompanyPortal onLogout={handleLogout} />;
       case AppView.PUBLIC_CV:
         return <PublicCvView onNavigate={setCurrentView} profileData={profileData} setProfileData={setProfileData} />;
       case AppView.ACCESS:

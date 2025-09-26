@@ -3,6 +3,7 @@ export enum AppView {
   INTENSIVE_PORTAL = 'INTENSIVE_PORTAL',
   EAD_PORTAL = 'EAD_PORTAL',
   TEACHER_PORTAL = 'TEACHER_PORTAL',
+  COMPANY_PORTAL = 'COMPANY_PORTAL',
   PUBLIC_CV = 'PUBLIC_CV',
 }
 
@@ -10,13 +11,14 @@ export enum AccessMode {
     CHOICE = 'choice',
     INTENSIVE_LOGIN = 'intensive_login',
     EAD_HUB = 'ead_hub',
-    TEACHER_LOGIN = 'teacher_login'
+    TEACHER_LOGIN = 'teacher_login',
+    COMPANY_LOGIN = 'company_login'
 }
 
 
 export interface User {
   name: string;
-  type: 'intensive' | 'ead' | 'teacher';
+  type: 'intensive' | 'ead' | 'teacher' | 'company';
 }
 
 export enum TeacherView {
@@ -195,4 +197,133 @@ export interface ProfileData {
     projects: { id: number; title: string; description: string; img: string }[];
     endorsements: Endorsement[];
     gameStats?: GameStats;
+}
+
+// ===== COMPANY PORTAL TYPES =====
+
+export enum CompanyView {
+    DASHBOARD = 'dashboard',
+    STOCK_FOOTAGE = 'stock-footage',
+    PROJECTS = 'projects',
+    JOBS = 'jobs',
+    TALENT_SEARCH = 'talent-search',
+    ANALYTICS = 'analytics',
+    PRODUCTION_REQUESTS = 'production-requests',
+    PROJECT_TRACKING = 'project-tracking',
+    JOB_MANAGEMENT = 'job-management',
+    TALENT_BANK = 'talent-bank',
+    STUDENT_HISTORY = 'student-history',
+    FEEDBACK_SYSTEM = 'feedback-system',
+    VIDEO_REVIEW = 'video-review',
+    NEW_PRODUCTION_REQUEST = 'new-production-request',
+    POST_JOB = 'post-job',
+    VIEW_JOBS = 'view-jobs',
+    NEW_PROJECT = 'new-project',
+    VIEW_PROJECTS = 'view-projects',
+    SETTINGS = 'settings',
+    SUPPORT = 'support',
+}
+
+export interface Company {
+    id: string;
+    name: string;
+    email: string;
+    cnpj: string;
+    segment: string;
+    size: 'small' | 'medium' | 'large';
+    type: 'supporter' | 'client' | 'both';
+    logo?: string;
+    website?: string;
+    description?: string;
+    createdAt: Date;
+}
+
+export interface StockFootage {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+    duration: number;
+    resolution: string;
+    price: number;
+    license: 'standard' | 'extended' | 'exclusive';
+    tags: string[];
+    previewUrl: string;
+    downloadUrl: string;
+    thumbnailUrl: string;
+    createdAt: Date;
+    downloads: number;
+}
+
+export interface ProductionRequest {
+    id: string;
+    companyId: string;
+    title: string;
+    description: string;
+    budget: number;
+    deadline: Date;
+    status: 'pending' | 'approved' | 'in_progress' | 'completed' | 'cancelled';
+    attachments: string[];
+    createdAt: Date;
+    updatedAt: Date;
+    estimatedDuration?: number;
+    projectType: 'commercial' | 'corporate' | 'documentary' | 'event' | 'other';
+}
+
+export interface CompanyJob {
+    id: string;
+    companyId: string;
+    title: string;
+    description: string;
+    requirements: string[];
+    salary?: number;
+    location: string;
+    type: 'full_time' | 'part_time' | 'internship' | 'freelance';
+    status: 'active' | 'paused' | 'closed';
+    createdAt: Date;
+    applicants: string[];
+    category: string;
+}
+
+export interface Talent {
+    id: string;
+    name: string;
+    email: string;
+    skills: string[];
+    experience: string;
+    portfolio: string[];
+    academicHistory: AcademicRecord[];
+    points: number;
+    availability: boolean;
+    location: string;
+    profileImage?: string;
+    bio?: string;
+    specializations: string[];
+}
+
+export interface AcademicRecord {
+    id: string;
+    studentId: string;
+    course: string;
+    grade: number;
+    semester: string;
+    year: number;
+    professor: string;
+    status: 'completed' | 'in_progress' | 'failed';
+}
+
+export interface StudentFeedback {
+    id: string;
+    studentId: string;
+    companyId: string;
+    jobId: string;
+    rating: number;
+    technicalSkills: number;
+    softSkills: number;
+    punctuality: number;
+    communication: number;
+    comments: string;
+    createdAt: Date;
+    improvements?: string[];
+    strengths?: string[];
 }

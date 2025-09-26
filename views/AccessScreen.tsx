@@ -3,7 +3,7 @@ import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
 import { AccessMode } from '../types';
 
 interface AccessScreenProps {
-  onLogin: (type: 'intensive' | 'ead' | 'teacher', name?: string) => void;
+  onLogin: (type: 'intensive' | 'ead' | 'teacher' | 'company', name?: string) => void;
 }
 
 const areasDeInteresse = ['Produção', 'Roteiro', 'Direção', 'IA Audiovisual', 'Pós-produção', 'Áudio'];
@@ -26,7 +26,7 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
       <p ref={addElement} className="reveal text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12" style={{ animationDelay: '0.2s' }}>
         Onde o talento da periferia se torna o futuro da comunicação premium e com propósito.
       </p>
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         <div ref={addElement} onClick={() => setMode(AccessMode.INTENSIVE_LOGIN)} className="reveal access-card p-8 rounded-lg cursor-pointer transition-all duration-300 bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-2xl font-bold mb-3 text-teal-400">Sou Aluno (Programa Intensivo)</h2>
           <p className="text-gray-300">Acesse seu dashboard como aluno do programa remunerado de 12 meses em São Paulo.</p>
@@ -38,6 +38,10 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
         <div ref={addElement} onClick={() => setMode(AccessMode.TEACHER_LOGIN)} className="reveal access-card p-8 rounded-lg cursor-pointer transition-all duration-300 bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.8s' }}>
           <h2 className="text-2xl font-bold mb-3 text-purple-400">Sou Professor</h2>
           <p className="text-gray-300">Acesse o portal do professor para gerenciar turmas, notas e conteúdos didáticos.</p>
+        </div>
+        <div ref={addElement} onClick={() => setMode(AccessMode.COMPANY_LOGIN)} className="reveal access-card p-8 rounded-lg cursor-pointer transition-all duration-300 bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '1.0s' }}>
+          <h2 className="text-2xl font-bold mb-3 text-blue-400">Portal Empresarial</h2>
+          <p className="text-gray-300">Acesse serviços exclusivos para empresas parceiras e clientes do instituto.</p>
         </div>
       </div>
     </div>
@@ -204,6 +208,41 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
   );
 
 
+  const renderCompanyLogin = () => (
+    <div className="animate-[fadeIn_0.5s_ease-out]">
+      <div className="max-w-md mx-auto bg-black/40 backdrop-blur-md border border-white/20 rounded-lg p-8">
+        <h2 className="text-3xl font-bold mb-6 text-blue-400">Portal Empresarial</h2>
+        <p className="text-gray-300 mb-6">Acesse os serviços exclusivos para empresas parceiras e clientes do Instituto Paulista de Cinema.</p>
+        <form onSubmit={(e) => { e.preventDefault(); onLogin('company'); }}>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-300 mb-2">Email Corporativo</label>
+            <input 
+              type="email" 
+              required 
+              defaultValue="empresa@exemplo.com"
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base touch-manipulation" 
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Senha</label>
+            <input 
+              type="password" 
+              required 
+              defaultValue="empresa123"
+              className="w-full bg-gray-800/50 border border-gray-600 rounded-md shadow-sm py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base touch-manipulation" 
+            />
+          </div>
+          <button type="submit" className="w-full bg-blue-500 text-white font-bold py-4 px-4 rounded-lg hover:bg-blue-600 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 touch-manipulation text-base mt-6">Entrar</button>
+        </form>
+        <div className="mt-6 pt-4 border-t border-gray-600">
+          <button onClick={() => setMode(AccessMode.CHOICE)} className="w-full text-sm text-gray-400 hover:text-blue-300 transition-colors py-2 touch-manipulation">
+            Outras opções de acesso →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   const renderContent = () => {
     switch (mode) {
       case AccessMode.INTENSIVE_LOGIN:
@@ -212,6 +251,8 @@ const AccessScreen: React.FC<AccessScreenProps> = ({ onLogin }) => {
         return renderEadHub();
       case AccessMode.TEACHER_LOGIN:
         return renderTeacherLogin();
+      case AccessMode.COMPANY_LOGIN:
+        return renderCompanyLogin();
       case AccessMode.CHOICE:
       default:
         return renderChoice();
